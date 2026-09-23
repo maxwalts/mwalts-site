@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Max Walts</title>
+    <style>
+        div {
+            columns: 300px;
+            gap: 8px;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            margin-bottom: 8px;
+            cursor: zoom-in;
+        }
+
+        img.zoomed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            object-fit: contain;
+            background: black;
+            cursor: zoom-out;
+        }
+
+        .lists {
+            columns: auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 16px 32px;
+        }
+
+        section h3,
+        section ul {
+            margin: 0;
+        }
+
+        summary {
+            cursor: pointer;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        summary h2 {
+            display: inline;
+        }
+    </style>
+</head>
+
+<body>
+    <details>
+        <summary>
+            <h2>Lists</h2>
+        </summary>
+        <div class="lists">
+            <section>
+                <h3>Best Cities</h3>
+                <ul>
+                    <li>Chicago</li>
+                    <li>Mexico City</li>
+                    <li>Seattle</li>
+                    <li>Shanghai</li>
+
+                </ul>
+            </section>
+            <section>
+                <h3>Best Neighborhood Bars</h3>
+                <ul>
+                    <li>Lottie's Pub</li>
+                    <li>Moe's Cantina</li>
+                    <li>2Twenty2 Tavern</li>
+                    <li>Butch McGuire's</li>
+                </ul>
+            </section>
+            <section>
+                <h3>People That Changed My Life</h3>
+                <ul>
+                    <li>Yashar</li>
+                    <li>Michael</li>
+                    <li>Camma</li>
+                    <li>Bobby</li>
+                    <li>Dylan</li>
+                    <li>Nora</li>
+                    <li>Laasya</li>
+                    <li>Soo</li>
+                </ul>
+            </section>
+        </div>
+    </details>
+    <details>
+        <summary>
+            <h2>Images</h2>
+        </summary>
+        <div>
+            <img src="images/DSCF2696.jpg" alt="DSCF2696.jpg" loading="lazy" />
+            <img src="images/IMG_5262.jpg" alt="IMG_5262.jpg" loading="lazy" />
+            <img src="images/IMG_5264.jpg" alt="IMG_5264.jpg" loading="lazy" />
+            <img src="images/IMG_5270.jpg" alt="IMG_5270.jpg" loading="lazy" />
+            <img src="images/_IMG_4844.jpg" alt="_IMG_4844.jpg" loading="lazy" />
+            <img src="images/_IMG_4863-2.jpg" alt="_IMG_4863-2.jpg" loading="lazy" />
+            <img src="images/_IMG_4863.jpg" alt="_IMG_4863.jpg" loading="lazy" />
+            <img src="images/_IMG_4873-2.jpg" alt="_IMG_4873-2.jpg" loading="lazy" />
+            <img src="images/_IMG_4873.jpg" alt="_IMG_4873.jpg" loading="lazy" />
+            <img src="images/_IMG_4880-2.jpg" alt="_IMG_4880-2.jpg" loading="lazy" />
+            <img src="images/_IMG_4880.jpg" alt="_IMG_4880.jpg" loading="lazy" />
+            <img src="images/_IMG_4960-2.jpg" alt="_IMG_4960-2.jpg" loading="lazy" />
+            <img src="images/_IMG_4960.jpg" alt="_IMG_4960.jpg" loading="lazy" />
+            <img src="images/DSCF5846.jpg" alt="DSCF5846.jpg" loading="lazy" />
+            <img src="images/_IMG_4978.jpg" alt="_IMG_4978.jpg" loading="lazy" />
+            <img src="images/_IMG_5006.jpg" alt="_IMG_5006.jpg" loading="lazy" />
+            <img src="images/_IMG_5065.jpg" alt="_IMG_5065.jpg" loading="lazy" />
+        </div>
+        <p>Follow on Instagram: <a href="https://www.instagram.com/maks.eon/" target="_blank">@maks.eon</a></p>
+    </details>
+    <script>
+        document.querySelectorAll("img").forEach(img => {
+            img.onclick = () => img.classList.toggle("zoomed");
+        });
+    </script>
+</body>
+
+</html>
