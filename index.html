@@ -5,6 +5,29 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Max Walts</title>
+    <meta name="description" content="Max Walts: lists, photos, and DJ mixes." />
+    <link rel="canonical" href="https://mwalts.com/" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content="Max Walts" />
+    <meta property="og:description" content="Max Walts: lists, photos, and DJ mixes." />
+    <meta property="og:url" content="https://mwalts.com/" />
+    <meta property="og:image" content="https://mwalts.com/profile.jpg" />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Max Walts",
+            "url": "https://mwalts.com/",
+            "image": "https://mwalts.com/profile.jpg",
+            "sameAs": [
+                "https://www.instagram.com/maks.eon/",
+                "https://soundcloud.com/maxcontrol"
+            ]
+        }
+    </script>
     <style>
         body {
             font-family: sans-serif;
@@ -59,11 +82,25 @@
             display: inline;
         }
 
-        details + details {
+        h1 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        img.avatar {
+            width: 56px;
+            height: 56px;
+            margin: 0;
+            border-radius: 50%;
+            cursor: default;
+        }
+
+        details+details {
             margin-top: 24px;
         }
 
-        details[open] > summary {
+        details[open]>summary {
             margin-bottom: 12px;
         }
 
@@ -78,6 +115,7 @@
 </head>
 
 <body>
+    <h1><img class="avatar" src="avatar.jpg" alt="" />Max Walts</h1>
     <details>
         <summary>
             <h2>Lists</h2>
@@ -189,7 +227,7 @@
         }
         gallery.append(...imgs);
 
-        document.querySelectorAll("img").forEach(img => {
+        document.querySelectorAll("#gallery img").forEach(img => {
             img.onclick = () => img.classList.toggle("zoomed");
         });
 
