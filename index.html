@@ -56,6 +56,14 @@
         summary h2 {
             display: inline;
         }
+
+        form textarea,
+        form input {
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
+            font: inherit;
+        }
     </style>
 </head>
 
@@ -92,9 +100,25 @@
                     <li>Camma</li>
                     <li>Bobby</li>
                     <li>Dylan</li>
+                    <li>Meg</li>
                     <li>Nora</li>
-                    <li>Laasya</li>
                     <li>Soo</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Books I've Recommended to People</h3>
+                <ul>
+                    <li>Models by Mark Manson</li>
+                    <li>Ca$hvertizing by Drew Eric Whitman</li>
+                    <li>The Laws of Human Nautre by Robert Greene</li>
+                    <li>Project Hail Mary by Andy Weir</li>
+                    <li>Don't Believe Everything You Think by Joseph Nguyen</li>
+                    <li>The Mom Test by Rob Fitzpatrick</li>
+                    <li>Scattered Minds by Gabor Maté MD</li>
+                    <li>Living with a SEAL by Jesse Itzler</li>
+                    <li>The Heart of Understanding by Thich Nhat Hanh</li>
+                    <li>PIHKAL by Alexander Shulgin and Ann Shulgin</li>
+
                 </ul>
             </section>
         </div>
@@ -103,7 +127,7 @@
         <summary>
             <h2>Images</h2>
         </summary>
-        <div>
+        <div id="gallery">
             <img src="images/DSCF2696.jpg" alt="DSCF2696.jpg" loading="lazy" />
             <img src="images/IMG_5262.jpg" alt="IMG_5262.jpg" loading="lazy" />
             <img src="images/IMG_5264.jpg" alt="IMG_5264.jpg" loading="lazy" />
@@ -121,13 +145,56 @@
             <img src="images/_IMG_4978.jpg" alt="_IMG_4978.jpg" loading="lazy" />
             <img src="images/_IMG_5006.jpg" alt="_IMG_5006.jpg" loading="lazy" />
             <img src="images/_IMG_5065.jpg" alt="_IMG_5065.jpg" loading="lazy" />
+            <img src="images/IMG_5334.jpg" alt="IMG_5334.jpg" loading="lazy" />
+            <img src="images/IMG_5373.jpg" alt="IMG_5373.jpg" loading="lazy" />
+            <img src="images/IMG_5384-2.jpg" alt="IMG_5384-2.jpg" loading="lazy" />
         </div>
         <p>Follow on Instagram: <a href="https://www.instagram.com/maks.eon/" target="_blank">@maks.eon</a></p>
     </details>
+    <details>
+        <summary>
+            <h2>Music</h2>
+        </summary>
+        <iframe title="DJ mixes on SoundCloud" width="100%" height="350" scrolling="no" frameborder="no"
+            allow="autoplay" loading="lazy"
+            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxcontrol&color=%23000000&auto_play=false&show_comments=false&visual=false"></iframe>
+        <p>Follow on Instagram: <a href="https://www.instagram.com/maxcontrol__" target="_blank">@maxcontrol__</a></p>
+    </details>
+    <details>
+        <summary>
+            <h2>Send Me a Note</h2>
+        </summary>
+        <form id="note" action="https://formspree.io/f/mjykplog" method="POST">
+            <p><textarea name="message" rows="5" placeholder="What's on your mind?" required></textarea></p>
+            <p><input type="text" name="name" placeholder="Name or contact info (optional)" /></p>
+            <p><button type="submit">Send</button></p>
+        </form>
+    </details>
     <script>
+        const gallery = document.getElementById("gallery");
+        const imgs = [...gallery.children];
+        for (let i = imgs.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [imgs[i], imgs[j]] = [imgs[j], imgs[i]];
+        }
+        gallery.append(...imgs);
+
         document.querySelectorAll("img").forEach(img => {
             img.onclick = () => img.classList.toggle("zoomed");
         });
+
+        const note = document.getElementById("note");
+        note.onsubmit = async e => {
+            e.preventDefault();
+            const res = await fetch(note.action, {
+                method: "POST",
+                body: new FormData(note),
+                headers: { Accept: "application/json" }
+            }).catch(() => null);
+            note.innerHTML = res && res.ok
+                ? "<p>Thanks, got it</p>"
+                : "<p>Something went wrong. Try again later</p>";
+        };
     </script>
 </body>
 
