@@ -58,14 +58,8 @@
         img {
             display: block;
             width: 100%;
-            height: auto;
             margin-bottom: 8px;
             cursor: zoom-in;
-        }
-
-        #gallery img:not([src]) {
-            background: rgba(128, 128, 128, 0.15);
-            color: transparent;
         }
 
         img.zoomed {
@@ -257,26 +251,26 @@
             <h2>Photos</h2>
         </summary>
         <div id="gallery">
-            <img data-src="images/DSCF2696.jpg" alt="DSCF2696.jpg" width="1333" height="2000" />
-            <img data-src="images/IMG_5262.jpg" alt="IMG_5262.jpg" width="1333" height="2000" />
-            <img data-src="images/IMG_5264.jpg" alt="IMG_5264.jpg" width="2000" height="1333" />
-            <img data-src="images/IMG_5270.jpg" alt="IMG_5270.jpg" width="2000" height="1333" />
-            <img data-src="images/_IMG_4844.jpg" alt="_IMG_4844.jpg" width="2000" height="1333" />
-            <img data-src="images/_IMG_4863-2.jpg" alt="_IMG_4863-2.jpg" width="2000" height="1333" />
-            <img data-src="images/_IMG_4863.jpg" alt="_IMG_4863.jpg" width="2000" height="1333" />
-            <img data-src="images/_IMG_4873-2.jpg" alt="_IMG_4873-2.jpg" width="2000" height="1333" />
-            <img data-src="images/_IMG_4873.jpg" alt="_IMG_4873.jpg" width="2000" height="1333" />
-            <img data-src="images/_IMG_4880-2.jpg" alt="_IMG_4880-2.jpg" width="2000" height="1333" />
-            <img data-src="images/_IMG_4880.jpg" alt="_IMG_4880.jpg" width="2000" height="1333" />
-            <img data-src="images/_IMG_4960-2.jpg" alt="_IMG_4960-2.jpg" width="2000" height="1333" />
-            <img data-src="images/_IMG_4960.jpg" alt="_IMG_4960.jpg" width="2000" height="1333" />
-            <img data-src="images/DSCF5846.jpg" alt="DSCF5846.jpg" width="1333" height="2000" />
-            <img data-src="images/_IMG_4978.jpg" alt="_IMG_4978.jpg" width="2000" height="1333" />
-            <img data-src="images/_IMG_5006.jpg" alt="_IMG_5006.jpg" width="1333" height="2000" />
-            <img data-src="images/_IMG_5065.jpg" alt="_IMG_5065.jpg" width="2000" height="1333" />
-            <img data-src="images/IMG_5334.jpg" alt="IMG_5334.jpg" width="2000" height="1333" />
-            <img data-src="images/IMG_5373.jpg" alt="IMG_5373.jpg" width="2000" height="1333" />
-            <img data-src="images/IMG_5384-2.jpg" alt="IMG_5384-2.jpg" width="2000" height="1333" />
+            <img src="images/DSCF2696.jpg" alt="DSCF2696.jpg" loading="lazy" />
+            <img src="images/IMG_5262.jpg" alt="IMG_5262.jpg" loading="lazy" />
+            <img src="images/IMG_5264.jpg" alt="IMG_5264.jpg" loading="lazy" />
+            <img src="images/IMG_5270.jpg" alt="IMG_5270.jpg" loading="lazy" />
+            <img src="images/_IMG_4844.jpg" alt="_IMG_4844.jpg" loading="lazy" />
+            <img src="images/_IMG_4863-2.jpg" alt="_IMG_4863-2.jpg" loading="lazy" />
+            <img src="images/_IMG_4863.jpg" alt="_IMG_4863.jpg" loading="lazy" />
+            <img src="images/_IMG_4873-2.jpg" alt="_IMG_4873-2.jpg" loading="lazy" />
+            <img src="images/_IMG_4873.jpg" alt="_IMG_4873.jpg" loading="lazy" />
+            <img src="images/_IMG_4880-2.jpg" alt="_IMG_4880-2.jpg" loading="lazy" />
+            <img src="images/_IMG_4880.jpg" alt="_IMG_4880.jpg" loading="lazy" />
+            <img src="images/_IMG_4960-2.jpg" alt="_IMG_4960-2.jpg" loading="lazy" />
+            <img src="images/_IMG_4960.jpg" alt="_IMG_4960.jpg" loading="lazy" />
+            <img src="images/DSCF5846.jpg" alt="DSCF5846.jpg" loading="lazy" />
+            <img src="images/_IMG_4978.jpg" alt="_IMG_4978.jpg" loading="lazy" />
+            <img src="images/_IMG_5006.jpg" alt="_IMG_5006.jpg" loading="lazy" />
+            <img src="images/_IMG_5065.jpg" alt="_IMG_5065.jpg" loading="lazy" />
+            <img src="images/IMG_5334.jpg" alt="IMG_5334.jpg" loading="lazy" />
+            <img src="images/IMG_5373.jpg" alt="IMG_5373.jpg" loading="lazy" />
+            <img src="images/IMG_5384-2.jpg" alt="IMG_5384-2.jpg" loading="lazy" />
         </div>
         <p>Follow my photography Instagram: <a href="https://www.instagram.com/maks.eon/" target="_blank">@maks.eon</a>
         </p>
@@ -309,18 +303,6 @@
             [imgs[i], imgs[j]] = [imgs[j], imgs[i]];
         }
         gallery.append(...imgs);
-
-        // Load photos in on-screen order (top to bottom) the first time Photos opens
-        const photos = gallery.closest("details");
-        const loadPhotos = () => {
-            if (!photos.open) return;
-            photos.removeEventListener("toggle", loadPhotos);
-            imgs.map(img => ({ img, rect: img.getBoundingClientRect() }))
-                .sort((a, b) => a.rect.top - b.rect.top || a.rect.left - b.rect.left)
-                .forEach(({ img }) => img.src = img.dataset.src);
-        };
-        photos.addEventListener("toggle", loadPhotos);
-        loadPhotos();
 
         document.querySelectorAll("#gallery img").forEach(img => {
             img.onclick = () => img.classList.toggle("zoomed");
