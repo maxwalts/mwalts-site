@@ -35,11 +35,13 @@
         }
 
         .lists {
-            columns: auto;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: flex-start;
-            gap: 16px 32px;
+            columns: 300px;
+            gap: 32px;
+        }
+
+        .lists section {
+            break-inside: avoid;
+            margin-bottom: 16px;
         }
 
         section h3,
@@ -55,6 +57,14 @@
 
         summary h2 {
             display: inline;
+        }
+
+        details + details {
+            margin-top: 24px;
+        }
+
+        details[open] > summary {
+            margin-bottom: 12px;
         }
 
         form textarea,
