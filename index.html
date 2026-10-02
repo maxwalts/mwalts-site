@@ -146,6 +146,11 @@
 
         iframe[title="Guestbook"] {
             color-scheme: light dark;
+            visibility: hidden;
+        }
+
+        iframe[title="Guestbook"].loaded {
+            visibility: visible;
         }
     </style>
 </head>
@@ -195,7 +200,7 @@
                 <ul>
                     <li>Ultramarathon Man by Dean Karnazes</li>
                     <li>Models by Mark Manson</li>
-                    <li>Ca$hvertizing by Drew Eric Whitman</li>
+                    <li>Cashvertizing by Drew Eric Whitman</li>
                     <li>The Laws of Human Nature by Robert Greene</li>
                     <li>Project Hail Mary by Andy Weir</li>
                     <li>Don't Believe Everything You Think by Joseph Nguyen</li>
@@ -305,6 +310,7 @@
             <h2>Guestbook</h2>
         </summary>
         <iframe title="Guestbook" width="100%" height="450" frameborder="0" loading="lazy"
+            onload="this.classList.add('loaded')"
             src="https://guestbooks.meadow.cafe/guestbook/6598"></iframe>
     </details>
     <details>
